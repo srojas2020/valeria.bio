@@ -30,6 +30,7 @@ body {
     color: var(--dark);
     line-height: 1.7;
     overflow-x: hidden;
+    position: relative;
 }
 
 h1, h2, h3 {
@@ -141,6 +142,7 @@ nav {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    width: 100%;
 }
 
 .hero-text h1 {
@@ -360,7 +362,46 @@ nav {
     }
 
     .section-title h2 {
-        font-size: 2.2rem;
+        font-size: 2rem; /* Reduced to avoid cut-off */
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem; /* Reduced for mobile */
+        word-wrap: break-word;
+    }
+
+    .agenda-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .calendly-inline-widget {
+        min-width: 100% !important;
+        height: 600px !important;
+    }
+}
+
+/* Sticky CTA Mobile */
+.sticky-cta {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sticky-cta {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 80px; /* Leave space for WhatsApp button */
+        z-index: 1000;
+    }
+
+    .sticky-cta .btn {
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        font-size: 0.9rem;
     }
 }
 
