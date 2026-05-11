@@ -35,8 +35,15 @@ body {
 
 h1, h2, h3 {
     font-family: var(--font-title);
-    font-weight: 400; /* Italiana usually only has 400 */
+    font-weight: 400;
     letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 a {
@@ -146,7 +153,7 @@ nav {
 }
 
 .hero-text h1 {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
     color: var(--dark);
@@ -180,7 +187,8 @@ nav {
 
 .hero-image img {
     width: 100%;
-    height: 600px;
+    height: auto;
+    aspect-ratio: 5 / 6;
     object-fit: cover;
     border-radius: 30px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.15);
@@ -340,44 +348,36 @@ nav {
     }
 
     .hero {
-        padding-top: 120px;
-        text-align: center;
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+        padding-top: 100px;
+        min-height: auto;
     }
 
     .hero-text h1 {
-        font-size: 2.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
     }
 
     .hero-image img {
-        height: 450px;
+        height: auto;
+        aspect-ratio: 1 / 1; /* Square on mobile for better fit */
     }
 
-    section {
-        padding: 5rem 0;
+    .section-title {
+        margin-bottom: 2.5rem;
     }
 
     .section-title h2 {
-        font-size: 2rem; /* Reduced to avoid cut-off */
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
     }
 
-    .hero-text h1 {
-        font-size: 2.2rem; /* Reduced for mobile */
-        word-wrap: break-word;
-    }
-
-    .agenda-container {
-        grid-template-columns: 1fr;
-        padding: 1.5rem;
-        gap: 2rem;
+    .container {
+        padding: 0 1.2rem;
     }
 
     .calendly-inline-widget {
-        min-width: 100% !important;
         height: 600px !important;
     }
 }
@@ -521,4 +521,32 @@ input::placeholder, textarea::placeholder {
 .fab:hover {
     color: var(--primary);
     transform: translateY(-3px);
+}
+
+.about-content, .what-is-content, .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.what-is-content {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+}
+
+@media (max-width: 992px) {
+    .about-content, .what-is-content, .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .what-is-content div:first-child {
+        padding: 2rem !important;
+    }
+
+    .contact-grid h2 {
+        font-size: 2.5rem !important;
+    }
 }
